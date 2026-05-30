@@ -40,6 +40,7 @@
             margin: 0;
             padding: 0;
             touch-action: none;
+            transition: background-color 0.5s ease;
         }
 
         .custom-scrollbar::-webkit-scrollbar { width: 0px; height: 0px; }
@@ -374,8 +375,8 @@
                                     <div class="flex items-center justify-between p-2 bg-black/30 border-b border-white/5 shrink-0">
                                         <span class="text-xs text-zinc-300 font-medium" id="a1_batchCountText">0 张图片</span>
                                         <div class="flex gap-2">
-                                            <button id="a1_selectAllBatchBtn" class="text-xs px-2 py-0.5 rounded border border-blue-500/30 text-blue-400 active:bg-blue-900/40">全选编辑</button>
-                                            <button id="a1_clearBatchBtn" class="text-xs text-red-400 hover:text-red-300">清除并重选</button>
+                                            <button id="a1_selectAllBatchBtn" class="text-xs px-2 py-0.5 rounded border border-blue-500/30 text-blue-400 hover:bg-blue-900/40 transition-colors">全选编辑</button>
+                                            <button id="a1_clearBatchBtn" class="text-xs text-red-400 hover:text-red-300 transition-colors">清除并重选</button>
                                         </div>
                                     </div>
                                     <div id="a1_batchThumbnailList" class="flex-1 overflow-y-auto custom-scrollbar p-2 grid grid-cols-4 gap-2 content-start"></div>
@@ -387,8 +388,7 @@
                                 <input type="file" id="a1_videoInput" accept="video/*" class="absolute inset-0 w-full h-full opacity-0 z-20">
                                 <div class="flex flex-col items-center gap-1.5">
                                     <svg class="w-6 h-6 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                                    <p class="text-sm font-medium text-white">导入视频并解析</p>
-                                    <p class="text-[10px] text-zinc-500 uppercase tracking-wider font-sans">Import Video</p>
+                                    <p class="text-sm font-medium text-white">导入视频</p>
                                 </div>
                             </div>
 
@@ -429,19 +429,13 @@
                                 <svg class="w-3.5 h-3.5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                 <span id="a1_batchParamHintText" class="text-[10px] text-blue-200">当前调整仅对选中图片生效</span>
                             </div>
-
                             <div class="space-y-3">
-                                <label class="block text-sm font-semibold text-white drop-shadow-md">色彩模式 <span class="ml-1 text-zinc-400 font-normal uppercase text-[10px] font-sans tracking-widest">Color Mode</span></label>
+                                <label class="block text-sm font-semibold text-white drop-shadow-md">色彩模式</label>
                                 <div class="relative glass-inner p-1 rounded-lg flex items-center">
                                     <div id="a1_styleSlider" class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] glass-active-slider rounded-md transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] translate-x-full"></div>
-                                    <button id="a1_styleBW" class="relative z-10 flex-1 py-1.5 text-sm rounded-md transition-colors duration-300 text-zinc-400 font-normal flex flex-col items-center justify-center gap-0.5 active:scale-95">
-                                        <span>极简黑白</span><span class="text-[9px] opacity-60 font-sans tracking-wide">Monochrome</span>
-                                    </button>
-                                    <button id="a1_styleColor" class="relative z-10 flex-1 py-1.5 text-sm rounded-md transition-colors duration-300 text-white font-semibold flex flex-col items-center justify-center gap-0.5 active:scale-95">
-                                        <span>专属五色</span><span class="text-[9px] opacity-70 font-sans tracking-wide">Strict Palette</span>
-                                    </button>
+                                    <button id="a1_styleBW" class="relative z-10 flex-1 py-1.5 text-sm rounded-md transition-colors duration-300 text-zinc-400 font-normal flex flex-col items-center justify-center gap-0.5 active:scale-95"><span>极简黑白</span></button>
+                                    <button id="a1_styleColor" class="relative z-10 flex-1 py-1.5 text-sm rounded-md transition-colors duration-300 text-white font-semibold flex flex-col items-center justify-center gap-0.5 active:scale-95"><span>专属五色</span></button>
                                 </div>
-                                
                                 <div id="a1_paletteHint" class="flex gap-2 pt-2 items-center justify-between px-1 transition-opacity duration-300">
                                     <span class="text-xs text-zinc-400">激活色彩</span>
                                     <div class="flex gap-1.5">
@@ -453,9 +447,8 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="space-y-3">
-                                <label class="block text-sm font-semibold text-white drop-shadow-md">画布底色 <span class="ml-1 text-zinc-400 font-normal uppercase text-[10px] font-sans tracking-widest">Canvas BG</span></label>
+                                <label class="block text-sm font-semibold text-white drop-shadow-md">画布底色</label>
                                 <div class="flex gap-8 px-1">
                                     <label class="flex items-center gap-2 cursor-pointer group">
                                         <div class="relative flex items-center justify-center">
@@ -473,21 +466,14 @@
                                     </label>
                                 </div>
                             </div>
-
                             <div class="space-y-3">
-                                <label class="block text-sm font-semibold text-white drop-shadow-md">提取目标 <span class="ml-1 text-zinc-400 font-normal uppercase text-[10px] font-sans tracking-widest">Mapping</span></label>
+                                <label class="block text-sm font-semibold text-white drop-shadow-md">提取目标</label>
                                 <div class="relative glass-inner p-1 rounded-lg flex items-center">
                                     <div id="a1_mapSlider" class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] glass-active-slider rounded-md transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]"></div>
-                                    <button id="a1_mapNormal" class="relative z-10 flex-1 py-1.5 text-sm rounded-md transition-colors duration-300 text-white font-semibold flex flex-col items-center justify-center gap-0.5 active:scale-95">
-                                        <span>深色转图形</span>
-                                    </button>
-                                    <button id="a1_mapInvert" class="relative z-10 flex-1 py-1.5 text-sm rounded-md transition-colors duration-300 text-zinc-400 font-normal flex flex-col items-center justify-center gap-0.5 active:scale-95">
-                                        <span>浅色转图形</span>
-                                    </button>
+                                    <button id="a1_mapNormal" class="relative z-10 flex-1 py-1.5 text-sm rounded-md transition-colors duration-300 text-white font-semibold flex flex-col items-center justify-center gap-0.5 active:scale-95">深色转图形</button>
+                                    <button id="a1_mapInvert" class="relative z-10 flex-1 py-1.5 text-sm rounded-md transition-colors duration-300 text-zinc-400 font-normal flex flex-col items-center justify-center gap-0.5 active:scale-95">浅色转图形</button>
                                 </div>
-                                <p class="text-[10px] text-zinc-400 leading-tight px-1">白底黑字请选“深色转图形”以保证底色纯净。</p>
                             </div>
-
                             <div class="space-y-3 pt-2">
                                 <div class="flex justify-between items-end">
                                     <label class="block text-sm font-semibold text-white drop-shadow-md">矩阵密度</label>
@@ -495,8 +481,7 @@
                                 </div>
                                 <input type="range" id="a1_blockSize" min="2" max="40" value="14" step="1">
                             </div>
-
-                            <div class="space-y-4 pt-1">
+                            <div class="space-y-4 pt-1 pb-10">
                                 <div class="flex justify-between items-end">
                                     <label class="block text-sm font-semibold text-white drop-shadow-md">对比度</label>
                                     <span id="a1_contrastVal" class="text-xs text-white font-mono bg-white/10 px-1.5 py-0.5 rounded shadow-inner">1.2</span>
@@ -519,7 +504,6 @@
                     <p class="text-xs text-zinc-300 mt-1" id="a2_loadingText">加载模型与请求视觉权限...</p>
                 </div>
                 <div id="a2_three-canvas-container" class="w-full h-full absolute inset-0 z-10"></div>
-                
                 <button id="a2_exitImmersiveBtn" class="glass-panel px-5 py-2.5 rounded-full text-white text-xs font-medium flex items-center justify-center shadow-[0_8px_32px_rgba(0,0,0,0.5)] active:scale-95 gap-2">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
                     退出沉浸
@@ -532,16 +516,14 @@
                     <div class="w-12 h-1.5 bg-white/30 rounded-full pointer-events-none"></div>
                 </div>
                 <div class="flex-1 overflow-y-auto custom-scrollbar sheet-content p-5 pt-0 pb-10 max-h-[38vh] flex flex-col gap-6">
-                    <!-- 传感器接入 -->
                     <div class="space-y-3">
-                        <label class="block text-sm font-semibold text-white drop-shadow-md">传感器接入 <span class="ml-1 text-zinc-400 font-normal uppercase text-[10px] font-sans tracking-widest">Sensor</span></label>
+                        <label class="block text-sm font-semibold text-white drop-shadow-md">传感器接入</label>
                         <div id="a2_cameraContainer" class="glass-inner rounded-xl overflow-hidden relative flex flex-col items-center justify-center transition-colors h-[180px] w-full">
                             <div id="a2_cameraInitUI" class="p-4 flex flex-col items-center justify-center w-full h-full">
                                 <button id="a2_startCamBtn" class="w-full py-3 glass-active-slider text-white rounded-lg text-sm font-semibold active:scale-95 shadow flex items-center justify-center gap-2">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                                     启动手势追踪
                                 </button>
-                                <p class="text-[10px] text-zinc-400 mt-3 text-center leading-relaxed">需允许浏览器访问摄像头权限<br>推理过程完全在本地运行</p>
                             </div>
                             <div id="a2_cameraFeed" class="absolute inset-0 w-full h-full hidden bg-black">
                                 <video id="a2_webcam" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen" autoplay playsinline></video>
@@ -555,28 +537,20 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-
-                    <!-- 主题选择 (定制版下拉菜单) -->
                     <div class="space-y-3 relative z-30">
                         <label class="block text-sm font-semibold text-white drop-shadow-md flex justify-between items-end">
-                            <span>视觉单元主题 <span class="ml-1 text-zinc-400 font-normal uppercase text-[10px] font-sans tracking-widest">Theme</span></span>
-                            <span id="a2_modeBadge" class="text-[9px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 uppercase tracking-wider hidden backdrop-blur-md shadow-[0_0_10px_rgba(244,63,94,0.2)]">Morphing</span>
+                            <span>视觉单元主题</span>
+                            <span id="a2_modeBadge" class="text-[9px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 uppercase tracking-wider hidden backdrop-blur-md">Morphing</span>
                         </label>
                         <div class="flex gap-2 relative">
-                            <!-- 定制下拉选择器 -->
                             <div class="relative flex-1" id="customThemeSelector">
                                 <div id="a2_themeDisplay" class="w-full glass-inner text-white text-sm rounded-lg py-3 px-4 flex justify-between items-center cursor-pointer active:scale-95 transition-transform duration-200">
                                     <span id="a2_themeText">00 概念字符</span>
                                     <svg id="a2_themeIcon" class="w-4 h-4 text-zinc-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                                 </div>
-                                
-                                <!-- 下拉列表面板 -->
                                 <div id="a2_themeDropdown" class="absolute bottom-[calc(100%+8px)] left-0 w-full glass-dropdown rounded-xl flex flex-col z-[100] overflow-hidden opacity-0 pointer-events-none transform translate-y-2 transition-all duration-300">
-                                    <div id="a2_themeList" class="max-h-[180px] overflow-y-auto p-1.5 flex flex-col gap-0.5 w-full">
-                                        <!-- JS 将动态插入这里 -->
-                                    </div>
+                                    <div id="a2_themeList" class="max-h-[180px] overflow-y-auto p-1.5 flex flex-col gap-0.5 w-full"></div>
                                 </div>
                             </div>
                             <button id="a2_manualModeBtn" class="glass-inner px-3 rounded-lg text-zinc-200 active:bg-white/10 flex items-center justify-center transition-colors">
@@ -589,84 +563,6 @@
                                 <span class="text-[9px] text-emerald-400 flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>静止时自动演化</span>
                             </div>
                             <div id="a2_colorPalette" class="flex gap-2"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-
-                    <!-- 交互指南 -->
-                    <div class="space-y-4">
-                        <label class="block text-sm font-semibold text-white drop-shadow-md">交互手势指南 <span class="ml-1 text-zinc-400 font-normal uppercase text-[10px] font-sans tracking-widest">Gestures</span></label>
-                        
-                        <div class="space-y-4">
-                            <!-- 模式切换 -->
-                            <div class="glass-inner p-3.5 rounded-xl flex items-start gap-3">
-                                <div class="text-xl mt-0.5 w-6 flex justify-center">✌️</div>
-                                <div>
-                                    <h4 class="text-xs font-medium text-white mb-0.5">模式切换 <span class="text-[10px] text-zinc-400 font-normal uppercase">MODE SWITCH</span></h4>
-                                    <p class="text-[10px] text-zinc-300 leading-relaxed opacity-80">双指伸直：全局切换「宏观群像」与「单体聚焦」视角。</p>
-                                </div>
-                            </div>
-
-                            <!-- 宏观模式交互 -->
-                            <div>
-                                <div class="flex items-center gap-2 mb-2 pl-1">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-[#ef4444] shadow-[0_0_5px_rgba(239,68,68,0.6)]"></div>
-                                    <span class="text-[10px] text-[#ef4444] font-medium tracking-wide">宏观模式交互</span>
-                                </div>
-                                <div class="glass-inner p-3.5 rounded-xl flex items-start gap-3">
-                                    <div class="mt-0.5 w-6 flex justify-center"><div class="w-4 h-4 rounded-full bg-[#ef4444] shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div></div>
-                                    <div>
-                                        <h4 class="text-xs font-medium text-white mb-0.5">主手控制 <span class="text-[10px] text-zinc-400 font-normal uppercase">PRIMARY</span></h4>
-                                        <p class="text-[10px] text-zinc-300 leading-relaxed opacity-80">手指平移：控制模型整体旋转方向。<br>双指交汇：当节点变白时，即触发空间排列形态变化。</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 单体模式交互 -->
-                            <div>
-                                <div class="flex items-center gap-2 mb-2 mt-4 pl-1">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_5px_rgba(255,255,255,0.6)]"></div>
-                                    <span class="text-[10px] text-white font-medium tracking-wide">单体模式交互</span>
-                                </div>
-                                <div class="glass-inner p-3.5 rounded-xl flex items-start gap-3">
-                                    <div class="mt-0.5 w-6 flex justify-center"><div class="w-4 h-4 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></div></div>
-                                    <div>
-                                        <h4 class="text-xs font-medium text-white mb-0.5">主手捏合 <span class="text-[10px] text-zinc-400 font-normal uppercase">PRIMARY</span></h4>
-                                        <p class="text-[10px] text-zinc-300 leading-relaxed opacity-80">双指捏合：控制视觉单元的像素化与清晰化过渡。</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 翻页控制 (单体) -->
-                            <div>
-                                <div class="flex items-center gap-2 mb-2 mt-4 pl-1">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-[#10b981] shadow-[0_0_5px_rgba(16,185,129,0.6)]"></div>
-                                    <span class="text-[10px] text-[#10b981] font-medium tracking-wide">翻页控制 (单体)</span>
-                                </div>
-                                <div class="glass-inner p-3.5 rounded-xl flex items-start gap-3">
-                                    <div class="text-xl mt-0.5 w-6 flex justify-center">🖐️</div>
-                                    <div>
-                                        <h4 class="text-xs font-medium text-white mb-0.5">主手挥动 <span class="text-[10px] text-zinc-400 font-normal uppercase">SWIPE</span></h4>
-                                        <p class="text-[10px] text-zinc-300 leading-relaxed opacity-80">五指伸展：向上挥动切换上一个，向下挥动切换下一个。</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 粒子控制 (通用) -->
-                            <div>
-                                <div class="flex items-center gap-2 mb-2 mt-4 pl-1">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-[#3b82f6] shadow-[0_0_5px_rgba(59,130,246,0.6)]"></div>
-                                    <span class="text-[10px] text-[#3b82f6] font-medium tracking-wide">粒子控制 (通用)</span>
-                                </div>
-                                <div class="glass-inner p-3.5 rounded-xl flex items-start gap-3">
-                                    <div class="mt-0.5 w-6 flex justify-center"><div class="w-4 h-4 rounded-full bg-[#3b82f6] shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div></div>
-                                    <div>
-                                        <h4 class="text-xs font-medium text-white mb-0.5">副手捏合 <span class="text-[10px] text-zinc-400 font-normal uppercase">SECONDARY</span></h4>
-                                        <p class="text-[10px] text-zinc-300 leading-relaxed opacity-80">第二只手捏合：控制单个元素内部粒子的炸开与收缩。</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -691,8 +587,7 @@
                 </div>
                 <div class="flex-1 overflow-y-auto custom-scrollbar sheet-content p-5 pt-0 pb-10 max-h-[38vh] flex flex-col gap-6">
                     <div class="space-y-6">
-                        <label class="block text-sm font-semibold text-[#4C4C4C] drop-shadow-sm">海报参数 <span class="ml-1 text-[#4C4C4C]/60 font-normal uppercase text-[10px] font-sans tracking-widest">Parameters</span></label>
-                        
+                        <label class="block text-sm font-semibold text-[#4C4C4C] drop-shadow-sm">海报参数</label>
                         <div class="space-y-2">
                             <div class="flex justify-between items-end">
                                 <span class="text-xs text-[#4C4C4C]/80">动画流速</span>
@@ -700,44 +595,12 @@
                             </div>
                             <input type="range" id="a3_speedSlider" min="0.2" max="5.0" step="0.1" value="3.0">
                         </div>
-
                         <div class="space-y-2">
                             <div class="flex justify-between items-end">
                                 <span class="text-xs text-[#4C4C4C]/80">单元尺寸</span>
                                 <span id="a3_scaleVal" class="text-xs text-[#4C4C4C] font-mono bg-[#4C4C4C]/10 px-1.5 py-0.5 rounded shadow-inner">2.3x</span>
                             </div>
                             <input type="range" id="a3_scaleSlider" min="0.5" max="5.0" step="0.1" value="2.3">
-                        </div>
-                    </div>
-                    
-                    <div class="h-px w-full bg-gradient-to-r from-transparent via-[#4C4C4C]/20 to-transparent"></div>
-
-                    <!-- 玩法说明 -->
-                    <div class="space-y-4 pb-2">
-                        <label class="block text-sm font-semibold text-[#4C4C4C] drop-shadow-sm">交互操作指南 <span class="ml-1 text-[#4C4C4C]/60 font-normal uppercase text-[10px] font-sans tracking-widest">Guide</span></label>
-                        
-                        <div class="glass-inner p-3 rounded-xl flex items-start gap-3">
-                            <div class="text-xl mt-0.5 w-6 flex justify-center">🖱️</div>
-                            <div>
-                                <h4 class="text-xs font-medium text-[#4C4C4C] mb-0.5">漫游视界 <span class="text-[10px] text-[#4C4C4C]/60 font-normal uppercase">Drag</span></h4>
-                                <p class="text-[10px] text-[#4C4C4C]/70 leading-relaxed opacity-80">单指触摸，可全方位拖拽并漫游无限延伸的阵列海报。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="glass-inner p-3 rounded-xl flex items-start gap-3">
-                            <div class="text-xl mt-0.5 w-6 flex justify-center">🔍</div>
-                            <div>
-                                <h4 class="text-xs font-medium text-[#4C4C4C] mb-0.5">缩放解析 <span class="text-[10px] text-[#4C4C4C]/60 font-normal uppercase">Zoom</span></h4>
-                                <p class="text-[10px] text-[#4C4C4C]/70 leading-relaxed opacity-80">使用双指捏合，在宏观群像与微观单体之间无缝缩放切换。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="glass-inner p-3 rounded-xl flex items-start gap-3">
-                            <div class="text-xl mt-0.5 w-6 flex justify-center">✨</div>
-                            <div>
-                                <h4 class="text-xs font-medium text-[#4C4C4C] mb-0.5">引力波干预 <span class="text-[10px] text-[#4C4C4C]/60 font-normal uppercase">Ripple</span></h4>
-                                <p class="text-[10px] text-[#4C4C4C]/70 leading-relaxed opacity-80">点击任意阵列节点，主动触发该区域的视觉单元重构与局部引力波反馈。</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -767,233 +630,98 @@
     </nav>
 
     <!-- ========================================== -->
-    <!-- 全局数据与系统控制逻辑 (Global Hook)        -->
+    <!-- 全局脚本 (Global Router & Initialization) -->
     <!-- ========================================== -->
     <script>
+        // 数据资源
         window.GAFA_DATA = {
-            iconThemes: [
-                "00 概念字符", "01 街区", "02 社区", "03 公建", "04 三生", "05 古村", 
-                "06 景观", "07 展陈", "08 数智", "09 系统", "10 材料", "11 装置"
-            ],
+            iconThemes: ["00 概念字符", "01 街区", "02 社区", "03 公建", "04 三生", "05 古村", "06 景观", "07 展陈", "08 数智", "09 系统", "10 材料", "11 装置"],
             themePalettes: [
-                [0x3C65B8, 0x58B665, 0xC3428E], // 00
-                [0xF906C3, 0x4ADD7F, 0x000000], // 01
-                [0x2562E9, 0x37BCF6, 0x000000], // 02
-                [0xFC5420, 0x37BCF6, 0x000000], // 03
-                [0x4ADD7F, 0x2562E9, 0x000000], // 04
-                [0x2562E9, 0xF906C3, 0x000000], // 05
-                [0xFC5420, 0x4ADD7F, 0x000000], // 06
-                [0x2562E9, 0xF906C3, 0x000000], // 07
-                [0xFC5420, 0xF906C3, 0x000000], // 08
-                [0xFC5420, 0x2562E9, 0x000000], // 09
-                [0xF906C3, 0x37BCF6, 0x000000], // 10
-                [0x4ADD7F, 0x37BCF6, 0x000000]  // 11
+                [0x3C65B8, 0x58B665, 0xC3428E], [0xF906C3, 0x4ADD7F, 0x000000], [0x2562E9, 0x37BCF6, 0x000000], 
+                [0xFC5420, 0x37BCF6, 0x000000], [0x4ADD7F, 0x2562E9, 0x000000], [0x2562E9, 0xF906C3, 0x000000], 
+                [0xFC5420, 0x4ADD7F, 0x000000], [0x2562E9, 0xF906C3, 0x000000], [0xFC5420, 0xF906C3, 0x000000], 
+                [0xFC5420, 0x2562E9, 0x000000], [0xF906C3, 0x37BCF6, 0x000000], [0x4ADD7F, 0x37BCF6, 0x000000]
             ],
             baseMaps: [
                 ["G+=+...S..S=++=..S..","I.....|.|.I.....|.|.","i..GS!...!S+==+!...!","I...IS_-_SI....S_-_S","G+=+G!...!i....!...!","......oOod..S....S..",".....O.....|.|..|.|.","......o*o.!...!!...!",".........OS_-_SS_-_S",".....doOo.!...!!...!"],
-                // 01 街区
-                ["...........","...........","...S.A.H...","......-....","...A.H.A...","....-......","...H.A.S...","...........","...........","...........","..........."],
-                // 02 社区
-                ["...........","...........","...S.-.S...","....H.H....","...|...|...","....H.H....","...S.-.S...","...........","...........","...........","..........."],
-                // 03 公建
-                ["...........","...........","...HS......","...|A..H...","...!SH.!...","...|A|A|...","...!S!S!...","...........","...........","...........","..........."],
-                // 04 三生
-                ["...........","...|...H...",".....S.....","..._...G...",".....A.....","...|...H...","...........","...........","...........","...........","..........."],
-                // 05 古村
-                ["...........",".....G.....","....A.A....","...|...|...","...!.H.!...","...S_-_S...","...........","...........","...........","...........","..........."],
-                // 06 景观
-                ["...........",".....H.....","...........","...|.A.|...","...A...A...","....-.-....","...........","...........","...........","...........","..........."],
-                // 07 展陈 (自动修正对齐至11字符)
-                ["...........","...*.d.*...","...o*.*o...","...........","...o*.*o...","...*.d.*...","...........","...........","...........","...........","..........."],
-                // 08 数智
-                ["...........","...D...D...","....o.o....","....O.O....","....o.o....","...D...D...","...........","...........","...........","...........","..........."],
-                // 09 系统
-                ["...........","...D.@.D...","....OdO....","...@d.d@...","....OdO....","...D.@.D...","...........","...........","...........","...........","..........."],
-                // 10 材料
-                ["...........","...*D.d*...","...O@o*o...","....D@D....","...o*o@O...","...*d.D*...","...........","...........","...........","...........","..........."],
-                // 11 装置
-                ["...........","...@O@.*...","....o.Oo...","...*.D.*...","...oO.o....","...*.@O@...","...........","...........","...........","...........","..........."]
+                ["...........","...S.A.H...","......-....","...A.H.A...","....-......","...H.A.S...","..........."],
+                ["...........","...S.-.S...","....H.H....","...|...|...","....H.H....","...S.-.S...","..........."],
+                ["...........","...........","...HS......","...|A..H...","...!SH.!...","...|A|A|...","...!S!S!...","...........","..........."],
+                ["...........","...|...H...",".....S.....","..._...G...",".....A.....","...|...H...","..........."],
+                ["...........",".....G.....","....A.A....","...|...|...","...!.H.!...","...S_-_S...","..........."],
+                ["...........",".....H.....","...........","...|.A.|...","...A...A...","....-.-....","..........."],
+                ["...........","...*.d.*...","...o*.*o...","...........","...o*.*o...","...*.d.*...","..........."],
+                ["...........","...D...D...","....o.o....","....O.O....","....o.o....","...D...D...","..........."],
+                ["...........","...D.@.D...","....OdO....","...@d.d@...","....OdO....","...D.@.D...","..........."],
+                ["...........","...*D.d*...","...O@o*o...","....D@D....","...o*o@O...","...*d.D*...","..........."],
+                ["...........","...@O@.*...","....o.Oo...","...*.D.*...","...oO.o....","...*.@O@...","..........."]
             ]
         };
         window.GAFA_DATA.hexPalettes = window.GAFA_DATA.themePalettes.map(palette => palette.map(hex => '#' + hex.toString(16).padStart(6, '0')));
         window.SystemState = { activeModule: 'home' };
 
-        // === 核心逻辑：动态拉动抽屉控制器 ===
+        // 底部抽屉逻辑
         function initDraggableSheet(sheetId, workspaceId) {
             const sheet = document.getElementById(sheetId);
             const workspace = workspaceId ? document.getElementById(workspaceId) : null;
             if (!sheet) return;
             const handle = sheet.querySelector('.drag-handle');
-            let startY = 0;
-            let currentTranslateY = 0;
-            let isExpanded = false;
+            let startY = 0; let currentTranslateY = 0; let isExpanded = false;
             let getCollapsedY = () => sheet.offsetHeight - 40;
 
             const updateWorkspace = (y, hasTransition) => {
                 if (!workspace) return;
                 workspace.style.transition = hasTransition ? 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)' : 'none';
-                const collapsedY = getCollapsedY();
-                let shift = Math.max(0, collapsedY - y);
-                // 上拉抽屉时，将视窗向上偏移避让遮挡
+                const collapsedY = getCollapsedY(); let shift = Math.max(0, collapsedY - y);
                 workspace.style.transform = `translateY(-${shift * 0.5}px)`;
             };
 
-            // 监听窗口大小或抽屉高度变化更新初始位置
-            new ResizeObserver(() => {
-                if (!isExpanded && sheet.offsetHeight > 0) {
-                    sheet.style.transition = 'none';
-                    sheet.style.transform = `translateY(${getCollapsedY()}px)`;
-                    updateWorkspace(getCollapsedY(), false);
-                }
-            }).observe(sheet);
-
-            handle.addEventListener('touchstart', (e) => {
-                startY = e.touches[0].clientY;
-                sheet.style.transition = 'none';
-            }, {passive: true});
-
-            handle.addEventListener('touchmove', (e) => {
-                const deltaY = e.touches[0].clientY - startY;
-                const collapsedY = getCollapsedY();
-                let newY = isExpanded ? deltaY : collapsedY + deltaY;
-                newY = Math.max(0, Math.min(newY, collapsedY));
-                currentTranslateY = newY;
-                sheet.style.transform = `translateY(${newY}px)`;
-                updateWorkspace(newY, false);
-            }, {passive: true});
-
+            new ResizeObserver(() => { if (!isExpanded && sheet.offsetHeight > 0) { sheet.style.transition = 'none'; sheet.style.transform = `translateY(${getCollapsedY()}px)`; updateWorkspace(getCollapsedY(), false); } }).observe(sheet);
+            handle.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; sheet.style.transition = 'none'; }, {passive: true});
+            handle.addEventListener('touchmove', (e) => { const deltaY = e.touches[0].clientY - startY; const collapsedY = getCollapsedY(); let newY = isExpanded ? deltaY : collapsedY + deltaY; newY = Math.max(0, Math.min(newY, collapsedY)); currentTranslateY = newY; sheet.style.transform = `translateY(${newY}px)`; updateWorkspace(newY, false); }, {passive: true});
             handle.addEventListener('touchend', (e) => {
                 sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)';
-                const collapsedY = getCollapsedY();
-                const threshold = collapsedY * 0.25;
-
-                if (isExpanded) {
-                    if (currentTranslateY > threshold) {
-                        isExpanded = false; 
-                        sheet.style.transform = `translateY(${collapsedY}px)`;
-                        updateWorkspace(collapsedY, true);
-                    } else {
-                        sheet.style.transform = `translateY(0px)`;
-                        updateWorkspace(0, true);
-                    }
-                } else {
-                    if (currentTranslateY < collapsedY - threshold) {
-                        isExpanded = true; 
-                        sheet.style.transform = `translateY(0px)`;
-                        updateWorkspace(0, true);
-                    } else {
-                        sheet.style.transform = `translateY(${collapsedY}px)`;
-                        updateWorkspace(collapsedY, true);
-                    }
-                }
+                const collapsedY = getCollapsedY(); const threshold = collapsedY * 0.25;
+                if (isExpanded) { if (currentTranslateY > threshold) { isExpanded = false; sheet.style.transform = `translateY(${collapsedY}px)`; updateWorkspace(collapsedY, true); } else { sheet.style.transform = `translateY(0px)`; updateWorkspace(0, true); } } 
+                else { if (currentTranslateY < collapsedY - threshold) { isExpanded = true; sheet.style.transform = `translateY(0px)`; updateWorkspace(0, true); } else { sheet.style.transform = `translateY(${collapsedY}px)`; updateWorkspace(collapsedY, true); } }
             });
-
-            handle.addEventListener('click', () => {
-                const collapsedY = getCollapsedY();
-                sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)';
-                isExpanded = !isExpanded;
-                sheet.style.transform = `translateY(${isExpanded ? 0 : collapsedY}px)`;
-                updateWorkspace(isExpanded ? 0 : collapsedY, true);
-            });
-
-            sheet.toggleSheet = () => {
-                const collapsedY = getCollapsedY();
-                sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)';
-                isExpanded = !isExpanded;
-                sheet.style.transform = `translateY(${isExpanded ? 0 : collapsedY}px)`;
-                updateWorkspace(isExpanded ? 0 : collapsedY, true);
-            };
-            sheet.closeSheet = () => {
-                const collapsedY = getCollapsedY();
-                sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)';
-                isExpanded = false;
-                sheet.style.transform = `translateY(${collapsedY}px)`;
-                updateWorkspace(collapsedY, true);
-            };
-            sheet.openSheet = () => {
-                sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)';
-                isExpanded = true;
-                sheet.style.transform = `translateY(0px)`;
-                updateWorkspace(0, true);
-            };
+            handle.addEventListener('click', () => { const collapsedY = getCollapsedY(); sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)'; isExpanded = !isExpanded; sheet.style.transform = `translateY(${isExpanded ? 0 : collapsedY}px)`; updateWorkspace(isExpanded ? 0 : collapsedY, true); });
+            sheet.toggleSheet = () => { const collapsedY = getCollapsedY(); sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)'; isExpanded = !isExpanded; sheet.style.transform = `translateY(${isExpanded ? 0 : collapsedY}px)`; updateWorkspace(isExpanded ? 0 : collapsedY, true); };
+            sheet.closeSheet = () => { const collapsedY = getCollapsedY(); sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)'; isExpanded = false; sheet.style.transform = `translateY(${collapsedY}px)`; updateWorkspace(collapsedY, true); };
+            sheet.openSheet = () => { sheet.style.transition = 'transform 0.4s cubic-bezier(0.32, 0.72, 0, 1)'; isExpanded = true; sheet.style.transform = `translateY(0px)`; updateWorkspace(0, true); };
         }
 
-        // 初始化各个模块的抽屉
-        window.addEventListener('DOMContentLoaded', () => {
-            initDraggableSheet('a1_sidebar', 'a1_workspace');
-            initDraggableSheet('a2_sidebar', 'a2_workspace');
-            initDraggableSheet('a3_sidebar', 'a3_workspace');
-        });
+        window.addEventListener('DOMContentLoaded', () => { initDraggableSheet('a1_sidebar', 'a1_workspace'); initDraggableSheet('a2_sidebar', 'a2_workspace'); initDraggableSheet('a3_sidebar', 'a3_workspace'); });
+        window.closeAllSheets = function() { ['a1_sidebar', 'a2_sidebar', 'a3_sidebar'].forEach(id => { const sheet = document.getElementById(id); if(sheet && sheet.closeSheet) sheet.closeSheet(); }); };
 
-        window.closeAllSheets = function() {
-            ['a1_sidebar', 'a2_sidebar', 'a3_sidebar'].forEach(id => {
-                const sheet = document.getElementById(id);
-                if(sheet && sheet.closeSheet) sheet.closeSheet();
-            });
-        };
-
+        // 模块切换
         window.switchSystemModule = function(mod) {
             if (window.SystemState.activeModule === mod) return;
-            
             if (window.a1_stopStream) window.a1_stopStream();
             if (window.a2_stopStream) window.a2_stopStream();
             
-            const isHome = mod === 'home';
-            const is2D = mod === '2d';
-            const is3D = mod === '3d';
-            const isPoster = mod === 'poster';
+            const isHome = mod === 'home'; const is2D = mod === '2d'; const is3D = mod === '3d'; const isPoster = mod === 'poster';
+            document.getElementById('module-home').classList.toggle('hidden', !isHome); document.getElementById('module-2d').classList.toggle('hidden', !is2D); document.getElementById('module-3d').classList.toggle('hidden', !is3D); document.getElementById('module-poster').classList.toggle('hidden', !isPoster);
             
-            document.getElementById('module-home').classList.toggle('hidden', !isHome);
-            document.getElementById('module-2d').classList.toggle('hidden', !is2D);
-            document.getElementById('module-3d').classList.toggle('hidden', !is3D);
-            document.getElementById('module-poster').classList.toggle('hidden', !isPoster);
-            
-            // 底部导航栏颜色处理 (Poster模式使用浅色调)
             const bNav = document.getElementById('mobile-bottom-nav');
-            if (isPoster) {
-                bNav.classList.remove('glass-dropdown', 'border-white/[0.08]');
-                bNav.classList.add('bg-[#E3E2E2]/90', 'backdrop-blur-xl', 'border-[#4C4C4C]/10');
-            } else {
-                bNav.classList.add('glass-dropdown', 'border-white/[0.08]');
-                bNav.classList.remove('bg-[#E3E2E2]/90', 'backdrop-blur-xl', 'border-[#4C4C4C]/10');
-            }
+            if (isPoster) { bNav.classList.remove('glass-dropdown', 'border-white/[0.08]'); bNav.classList.add('bg-[#E3E2E2]/90', 'backdrop-blur-xl', 'border-[#4C4C4C]/10'); } 
+            else { bNav.classList.add('glass-dropdown', 'border-white/[0.08]'); bNav.classList.remove('bg-[#E3E2E2]/90', 'backdrop-blur-xl', 'border-[#4C4C4C]/10'); }
 
             const navBtns = { 'home': 'navBtnHome', '2d': 'navBtn2D', '3d': 'navBtn3D', 'poster': 'navBtnPoster' };
-            Object.values(navBtns).forEach(id => {
-                const btn = document.getElementById(id);
-                if(btn) { 
-                    btn.classList.remove('text-white', 'text-[#4C4C4C]'); 
-                    btn.classList.add(isPoster ? 'text-[#4C4C4C]/50' : 'text-zinc-500'); 
-                }
-            });
+            Object.values(navBtns).forEach(id => { const btn = document.getElementById(id); if(btn) { btn.classList.remove('text-white', 'text-[#4C4C4C]'); btn.classList.add(isPoster ? 'text-[#4C4C4C]/50' : 'text-zinc-500'); } });
             const activeBtn = document.getElementById(navBtns[mod]);
-            if(activeBtn) { 
-                activeBtn.classList.remove('text-zinc-500', 'text-[#4C4C4C]/50');
-                if (isPoster) activeBtn.classList.add('text-[#4C4C4C]');
-                else activeBtn.classList.add('text-white');
-            }
+            if(activeBtn) { activeBtn.classList.remove('text-zinc-500', 'text-[#4C4C4C]/50'); if (isPoster) activeBtn.classList.add('text-[#4C4C4C]'); else activeBtn.classList.add('text-white'); }
 
-            // 顶部 Header 颜色处理 (Poster 模式使用灰色字体和边框)
-            const header = document.getElementById('main-header');
-            const headerTitle = document.getElementById('globalTitle');
-            if (isPoster) {
-                header.classList.remove('border-white/[0.08]'); header.classList.add('border-[#4C4C4C]/10');
-                headerTitle.classList.remove('text-white'); headerTitle.classList.add('text-[#4C4C4C]');
-                headerTitle.innerHTML = `GAFA SAA <span class="text-[#4C4C4C]/60 font-normal">2026</span>`;
-            } else {
-                header.classList.add('border-white/[0.08]'); header.classList.remove('border-[#4C4C4C]/10');
-                headerTitle.classList.add('text-white'); headerTitle.classList.remove('text-[#4C4C4C]');
-                headerTitle.innerHTML = `GAFA SAA <span class="text-white/60 font-normal">2026</span>`;
-            }
+            const header = document.getElementById('main-header'); const headerTitle = document.getElementById('globalTitle');
+            if (isPoster) { header.classList.remove('border-white/[0.08]'); header.classList.add('border-[#4C4C4C]/10'); headerTitle.classList.remove('text-white'); headerTitle.classList.add('text-[#4C4C4C]'); headerTitle.innerHTML = `GAFA SAA <span class="text-[#4C4C4C]/60 font-normal">2026</span>`; } 
+            else { header.classList.add('border-white/[0.08]'); header.classList.remove('border-[#4C4C4C]/10'); headerTitle.classList.add('text-white'); headerTitle.classList.remove('text-[#4C4C4C]'); headerTitle.innerHTML = `GAFA SAA <span class="text-white/60 font-normal">2026</span>`; }
             
-            document.getElementById('home_action_wrapper').classList.toggle('hidden', !isHome);
-            document.getElementById('a1_action_wrapper').classList.toggle('hidden', !is2D);
-            document.getElementById('a2_action_wrapper').classList.toggle('hidden', !is3D);
-            document.getElementById('a3_action_wrapper').classList.toggle('hidden', !isPoster);
+            document.getElementById('home_action_wrapper').classList.toggle('hidden', !isHome); document.getElementById('a1_action_wrapper').classList.toggle('hidden', !is2D); document.getElementById('a2_action_wrapper').classList.toggle('hidden', !is3D); document.getElementById('a3_action_wrapper').classList.toggle('hidden', !isPoster);
 
-            window.closeAllSheets();
-            window.SystemState.activeModule = mod;
+            // 控制全局背景颜色：只有 3D 模式变黑
+            if (window.updateGlobalBackground) window.updateGlobalBackground(is3D);
 
+            window.closeAllSheets(); window.SystemState.activeModule = mod;
             if (!isHome) window.dispatchEvent(new Event('resize'));
         };
     </script>
@@ -1022,8 +750,6 @@
 
             let originalImage = null; let isColorMode = true; let isNormalMapping = true; 
             let offscreenCanvas = document.createElement('canvas'); let offscreenCtx = offscreenCanvas.getContext('2d', { willReadFrequently: true });
-            
-            // 4K视频录制专用隐藏画布
             const recordCanvas = document.createElement('canvas');
 
             let sourceMode = 'camera'; let animationFrameId = null; let isExporting = false; 
@@ -1033,19 +759,10 @@
             const tabSlider = document.getElementById('a1_tabSlider');
             const tabs = { 'camera': document.getElementById('a1_tabCamera'), 'image': document.getElementById('a1_tabUpload'), 'video': document.getElementById('a1_tabVideo'), 'batch': document.getElementById('a1_tabBatch') };
 
-            // 悬浮小视窗折叠逻辑
             let isMiniCamHidden = false;
             document.getElementById('a1_miniCamToggle').addEventListener('click', function() {
-                isMiniCamHidden = !isMiniCamHidden;
-                const wrapper = document.getElementById('a1_miniCamWrapper');
-                const svg = this.querySelector('svg');
-                if(isMiniCamHidden) {
-                    wrapper.style.transform = 'translateX(-100px)'; // Hide the video container part
-                    svg.style.transform = 'rotate(180deg)';
-                } else {
-                    wrapper.style.transform = 'translateX(0)';
-                    svg.style.transform = 'rotate(0deg)';
-                }
+                isMiniCamHidden = !isMiniCamHidden; const wrapper = document.getElementById('a1_miniCamWrapper'); const svg = this.querySelector('svg');
+                if(isMiniCamHidden) { wrapper.style.transform = 'translateX(-100px)'; svg.style.transform = 'rotate(180deg)'; } else { wrapper.style.transform = 'translateX(0)'; svg.style.transform = 'rotate(0deg)'; }
             });
 
             function getDefaultParams() { return { blockSize: 14, contrast: 1.2, bgColor: '#ffffff', isColorMode: true, isNormalMapping: true }; }
@@ -1069,7 +786,7 @@
 
             function switchTab(mode) {
                 stopStreamOrVideo(); const tabMap = { 'camera': 0, 'image': 1, 'video': 2, 'batch': 3 }; tabSlider.style.transform = `translateX(${tabMap[mode] * 100}%)`;
-                Object.keys(tabs).forEach(k => { tabs[k].className = k === mode ? 'relative z-10 flex-1 py-1.5 text-xs rounded-md text-white font-semibold transition-colors' : 'relative z-10 flex-1 py-1.5 text-xs rounded-md text-zinc-400 font-normal transition-colors'; });
+                Object.keys(tabs).forEach(k => { tabs[k].className = k === mode ? 'relative z-10 flex-1 py-2 text-xs rounded-md text-white font-semibold transition-colors active:scale-95' : 'relative z-10 flex-1 py-2 text-xs rounded-md text-zinc-400 font-normal transition-colors active:scale-95'; });
                 uploadArea.classList.toggle('hidden', mode !== 'image'); batchArea.classList.toggle('hidden', mode !== 'batch'); batchParamHint.classList.toggle('hidden', mode !== 'batch'); videoUploadArea.classList.toggle('hidden', mode !== 'video'); cameraArea.classList.toggle('hidden', mode !== 'camera');
                 videoPlaybackControls.classList.add('hidden'); sourceMode = mode;
                 if (mode === 'image' && originalImage) { setupOffscreenCanvasForImage(originalImage); renderArt(); showWorkspace(); } else if (mode === 'batch' && batchImages.length > 0) { selectBatchImage(currentBatchIndex >= 0 ? currentBatchIndex : 0); showWorkspace(); } else if (mode === 'image' || mode === 'batch') { hideWorkspace(); }
@@ -1120,8 +837,7 @@
                 if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
                 if (videoElement.srcObject) { videoElement.srcObject.getTracks().forEach(track => track.stop()); videoElement.srcObject = null; }
                 if (videoElement.src) { videoElement.pause(); videoElement.removeAttribute('src'); videoElement.load(); }
-                document.getElementById('a1_miniCamWrapper').classList.add('hidden');
-                document.getElementById('a1_miniCamVideo').srcObject = null;
+                document.getElementById('a1_miniCamWrapper').classList.add('hidden'); document.getElementById('a1_miniCamVideo').srcObject = null;
                 startCamBtn.classList.remove('hidden'); stopCamBtn.classList.add('hidden'); if(isRecording) toggleRecording(); 
             }
             window.a1_stopStream = stopStreamOrVideo;
@@ -1132,24 +848,11 @@
                 try {
                     startCamBtn.innerHTML = "正在请求..."; if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error("环境不支持调用摄像头");
                     const stream = await navigator.mediaDevices.getUserMedia({ video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: "user" } }); 
-                    videoElement.srcObject = stream;
-                    document.getElementById('a1_miniCamVideo').srcObject = stream; // 绑定到悬浮小视窗
-                    
+                    videoElement.srcObject = stream; document.getElementById('a1_miniCamVideo').srcObject = stream; 
                     videoElement.onloadedmetadata = async () => { 
-                        await videoElement.play(); 
-                        startCamBtn.innerHTML = `启动前置摄像头`; 
-                        startCamBtn.classList.add('hidden'); 
-                        stopCamBtn.classList.remove('hidden'); 
-                        document.getElementById('a1_miniCamWrapper').classList.remove('hidden'); // 显示小视窗
-                        
-                        // 每次启动重置为展开状态
-                        isMiniCamHidden = false;
-                        document.getElementById('a1_miniCamWrapper').style.transform = 'translateX(0)';
-                        document.getElementById('a1_miniCamToggle').querySelector('svg').style.transform = 'rotate(0deg)';
-
-                        showWorkspace(); 
-                        processContinuousFrame(); 
-                        const sheet = document.getElementById('a1_sidebar'); if(sheet.closeSheet) sheet.closeSheet(); 
+                        await videoElement.play(); startCamBtn.innerHTML = `启动前置摄像头`; startCamBtn.classList.add('hidden'); stopCamBtn.classList.remove('hidden'); document.getElementById('a1_miniCamWrapper').classList.remove('hidden'); 
+                        isMiniCamHidden = false; document.getElementById('a1_miniCamWrapper').style.transform = 'translateX(0)'; document.getElementById('a1_miniCamToggle').querySelector('svg').style.transform = 'rotate(0deg)';
+                        showWorkspace(); processContinuousFrame(); const sheet = document.getElementById('a1_sidebar'); if(sheet.closeSheet) sheet.closeSheet(); 
                     };
                 } catch (err) { startCamBtn.innerHTML = `启动前置摄像头`; camError.classList.remove('hidden'); }
             });
@@ -1214,7 +917,6 @@
                 ctx.fillStyle = data.bgColor; ctx.fillRect(0,0,artCanvas.width,artCanvas.height);
                 for(let y=0; y<data.rows; y++) { for(let x=0; x<data.cols; x++) { const c=data.grid[y][x]; drawStrictGeometry(ctx, null, x*data.blockSize, y*data.blockSize, data.blockSize, c.pattern, c.c1, c.c2, data.bgColor); } }
 
-                // 4K 离屏视频渲染逻辑
                 if(isRecording) {
                     const isPortrait = artCanvas.height > artCanvas.width; const recW = isPortrait?2160:3840, recH = isPortrait?3840:2160;
                     if(recordCanvas.width!==recW || recordCanvas.height!==recH){ recordCanvas.width=recW; recordCanvas.height=recH; }
@@ -1346,6 +1048,19 @@
         const bgScene = new THREE.Scene(); 
         bgScene.fog = new THREE.FogExp2(0x4C4C4C, 0.0008); 
 
+        // 暴露给全局的动态背景切换函数
+        window.updateGlobalBackground = function(isBlack) {
+            if (isBlack) {
+                bgScene.background = new THREE.Color(0x000000);
+                bgScene.fog.color.setHex(0x000000);
+                document.body.style.backgroundColor = '#000000';
+            } else {
+                bgScene.background = null;
+                bgScene.fog.color.setHex(0x4C4C4C);
+                document.body.style.backgroundColor = '#4C4C4C';
+            }
+        };
+
         const bgCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 3000); 
         bgCamera.position.z = 800;
         
@@ -1375,18 +1090,24 @@
         };
 
         const container = document.getElementById('a2_three-canvas-container');
-        const scene = new THREE.Scene(); scene.background = null; scene.fog = new THREE.FogExp2(0x4C4C4C, 0.001);
+        const scene = new THREE.Scene(); scene.background = null; 
+        scene.fog = new THREE.FogExp2(0x000000, 0.001); // 前景雾效黑
         let width = container.clientWidth || window.innerWidth; let height = container.clientHeight || window.innerHeight;
         const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 3000); let targetCameraZ = 190; camera.position.z = targetCameraZ; 
-        const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true }); renderer.setSize(width, height); renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); renderer.setClearColor( 0x4C4C4C, 0 ); container.appendChild(renderer.domElement);
+        const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true }); renderer.setSize(width, height); renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); 
+        renderer.setClearColor( 0x000000, 0 ); // 前景黑透明
+        container.appendChild(renderer.domElement);
+        
         scene.add(new THREE.AmbientLight(0xffffff, 0.9)); const dirLight = new THREE.DirectionalLight(0xffffff, 0.8); dirLight.position.set(50, 100, 150); scene.add(dirLight);
 
+        // 恢复前台 3D 模块的交互星星背景
         const starsGeo = new THREE.BufferGeometry(); const starsMat = new THREE.PointsMaterial({ color: 0xffffff, size: 1, transparent: true, opacity: 0.8 });
         const starsVerts = []; for (let i = 0; i < 3000; i++) starsVerts.push(THREE.MathUtils.randFloatSpread(1500), THREE.MathUtils.randFloatSpread(1500), THREE.MathUtils.randFloatSpread(1500));
         starsGeo.setAttribute('position', new THREE.Float32BufferAttribute(starsVerts, 3)); scene.add(new THREE.Points(starsGeo, starsMat));
 
         const lettersGroup = new THREE.Group(); scene.add(lettersGroup);
 
+        // 4. 3D 几何构建器 (共享使用)
         const TILE_SIZE = 10; const DEPTH = 10;
         function createSolid(mat) { return new THREE.Mesh(new THREE.BoxGeometry(TILE_SIZE, TILE_SIZE, DEPTH), mat); }
         function createGrid(mat) { const group = new THREE.Group(); const lt = TILE_SIZE * 0.15; const cs = (TILE_SIZE - 2 * lt) / 3; for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) { const mesh = new THREE.Mesh(new THREE.BoxGeometry(cs, cs, DEPTH), mat); mesh.position.set((i - 1) * (cs + lt), (1 - j) * (cs + lt), 0); group.add(mesh); } return group; }
@@ -1395,6 +1116,14 @@
         function createConcentricCircle(matO, matM, matI) { const group = new THREE.Group(); const ext = { depth: DEPTH, bevelEnabled: false, curveSegments: 32 }; const ring = (oR, iR, mat) => { const s = new THREE.Shape(); s.absarc(0, 0, oR, 0, Math.PI * 2, false); const h = new THREE.Path(); h.absarc(0, 0, iR, 0, Math.PI * 2, true); s.holes.push(h); const geo = new THREE.ExtrudeGeometry(s, ext); geo.translate(0, 0, -DEPTH/2); return new THREE.Mesh(geo, mat); }; const R = TILE_SIZE / 2; group.add(ring(R, R * 0.65, matO)); group.add(ring(R * 0.65, R * 0.35, matM)); const cg = new THREE.CylinderGeometry(R * 0.35, R * 0.35, DEPTH, 32); cg.rotateX(Math.PI / 2); group.add(new THREE.Mesh(cg, matI)); return group; }
         function createDashedCircle(mat) { const group = new THREE.Group(); const R = TILE_SIZE / 2; const rI = R * 0.65; const ext = { depth: DEPTH, bevelEnabled: false, curveSegments: 4 }; for (let i = 0; i < 8; i++) { const s = new THREE.Shape(); const a1 = (i / 8) * Math.PI * 2; const a2 = a1 + (Math.PI * 2 / 8) * 0.6; s.absarc(0, 0, R, a1, a2, false); s.lineTo(Math.cos(a2) * rI, Math.sin(a2) * rI); s.absarc(0, 0, rI, a2, a1, true); s.lineTo(Math.cos(a1) * R, Math.sin(a1) * R); const geo = new THREE.ExtrudeGeometry(s, ext); geo.translate(0, 0, -DEPTH/2); group.add(new THREE.Mesh(geo, mat)); } return group; }
         function createSolidCircle(mat) { const geo = new THREE.CylinderGeometry(TILE_SIZE/2, TILE_SIZE/2, DEPTH, 32); geo.rotateX(Math.PI / 2); return new THREE.Mesh(geo, mat); }
+
+        // --- 完整状态变量声明区 ---
+        let allBlocks = []; let allIconGroups = []; let isAllMode = false; let targetShapeIndex = 0; let lastMorphTriggerTime = 0; const shapeNames = ['MATRIX', 'RING', 'SPHERE', 'HELIX'];
+        let baseRotationX = 0, baseRotationY = 0;
+        let transitionState = 0, pendingThemeIndex = 0, transitionValue = 0.0, isAutoTransition = false;
+        let currentScale = 1.0, isDragging = false, prevMouse = { x: 0, y: 0 };
+        let initial3DZoom = 1.0, initial3DPinchDist = 0;
+        let targetDither = 0.0, currentDither = 0.0, targetRotationX = 0, targetRotationY = 0, targetChaos = 0.0, currentChaos = 0.0, isTrackingHands = false, isHandDetected = false;
 
         const bgObjects = []; const flyObjects = []; 
         function createBgUnit(index) {
@@ -1429,8 +1158,6 @@
             flyObjects.push({ mesh: unit, velocity: velocity, distanceTraveled: 0, maxDistance: radius * 2.5 });
         });
 
-        let allBlocks = []; let allIconGroups = []; let isAllMode = false; let targetShapeIndex = 0; let lastMorphTriggerTime = 0; const shapeNames = ['MATRIX', 'RING', 'SPHERE', 'HELIX'];
-
         function clearScene() {
             while(lettersGroup.children.length > 0) { let child = lettersGroup.children[0]; lettersGroup.remove(child); child.traverse((n) => { if(n.isMesh) { if(n.geometry) n.geometry.dispose(); if(n.material) { Array.isArray(n.material) ? n.material.forEach(m=>m.dispose()) : n.material.dispose(); } } }); }
             allBlocks = []; allIconGroups = [];
@@ -1455,17 +1182,13 @@
         function buildSingleScene(index) { clearScene(); targetCameraZ = 280; updateColorUI(index); addIconToScene(index, 1.0); modeBadge.classList.add('hidden'); baseRotationX = 0; baseRotationY = 0; currentScale = 1.0; }
         function buildAllScenes() { clearScene(); targetCameraZ = 850; modeBadge.classList.remove('hidden'); for(let i=1; i < iconThemes.length; i++) { addIconToScene(i, 0.85); } baseRotationX = 0; baseRotationY = 0; currentScale = 1.0; }
 
-        let autoPlayTimeout; const AUTO_PLAY_DELAY = 8000;
+        let autoPlayTimeout; const AUTO_PLAY_DELAY = 13000; // --- 静止 13 秒才开始自动切换 ---
         function resetAutoPlayTimer() { clearTimeout(autoPlayTimeout); autoPlayTimeout = setTimeout(autoPlayNext, AUTO_PLAY_DELAY); }
         function autoPlayNext() { if (!isAllMode) { if (transitionState === 0) triggerThemeChange('next', true); } else { targetShapeIndex = (targetShapeIndex + 1) % 4; lastMorphTriggerTime = performance.now(); } resetAutoPlayTimer(); }
         window.addEventListener('touchstart', resetAutoPlayTimer, {passive: true});
 
         function toggleMode() { isAllMode = !isAllMode; if (isAllMode) buildAllScenes(); else buildSingleScene(currentThemeIndex); resetAutoPlayTimer(); }
         document.getElementById('a2_manualModeBtn').addEventListener('click', toggleMode);
-
-        let transitionState = 0; let pendingThemeIndex = 0; let transitionValue = 0.0; let isAutoTransition = false;
-        let currentScale = 1.0, isDragging = false, prevMouse = { x: 0, y: 0 };
-        let initial3DZoom = 1.0, initial3DPinchDist = 0;
 
         // 移动端全屏拖拽与双指缩放支持
         container.addEventListener('touchstart', (e) => { 
@@ -1501,7 +1224,6 @@
             bgRenderer.setSize(window.innerWidth, window.innerHeight); bgCamera.aspect = window.innerWidth / window.innerHeight; bgCamera.updateProjectionMatrix();
         }).observe(container);
 
-        let targetDither = 0.0, currentDither = 0.0, targetRotationX = 0, targetRotationY = 0, targetChaos = 0.0, currentChaos = 0.0, baseRotationX = 0, baseRotationY = 0, isTrackingHands = false, isHandDetected = false;
 
         function animate() {
             requestAnimationFrame(animate); const time = performance.now(); 
@@ -1543,7 +1265,6 @@
             composer.render();
         }
 
-        // MediaPipe 完整逻辑
         const videoElement = document.getElementById('a2_webcam'); const trackingCanvas = document.getElementById('a2_tracking-canvas'); const canvasCtx = trackingCanvas.getContext('2d');
         function isPeaceSign(landmarks) { const wrist = landmarks[0]; const getDist = (p1, p2) => Math.hypot(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z); const iTip = getDist(landmarks[8], wrist), iMcp = getDist(landmarks[5], wrist); const mTip = getDist(landmarks[12], wrist), mMcp = getDist(landmarks[9], wrist); const rTip = getDist(landmarks[16], wrist), rMcp = getDist(landmarks[13], wrist); const pTip = getDist(landmarks[20], wrist), pMcp = getDist(landmarks[17], wrist); return (iTip > iMcp * 1.3) && (mTip > mMcp * 1.3) && (rTip < rMcp * 1.15) && (pTip < pMcp * 1.15); }
         function isFlatHand(landmarks) { const wrist = landmarks[0]; const getDist = (p1, p2) => Math.hypot(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z); return (getDist(landmarks[8], wrist) > getDist(landmarks[5], wrist) * 1.05) && (getDist(landmarks[12], wrist) > getDist(landmarks[9], wrist) * 1.05) && (getDist(landmarks[16], wrist) > getDist(landmarks[13], wrist) * 1.05) && (getDist(landmarks[20], wrist) > getDist(landmarks[17], wrist) * 1.05); }
@@ -1622,7 +1343,7 @@
     </script>
 
     <!-- ========================================== -->
-    <!-- APP 3: 交互海报引擎 JS (完整保留)            -->
+    <!-- APP 3: 交互海报引擎 JS                       -->
     <!-- ========================================== -->
     <script>
         (function() {
